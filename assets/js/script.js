@@ -19,12 +19,53 @@
 // 5.1 timer should be displayed while the questions/answers change
 // 5.2 how to create a countdown in javascript - what will we need
 
-var myQuestion1 = {
-    questiojn: "What does the DOM stand for?",
-    answer: "The DOM",
-};
+var prevButton = document.getElementById('previous');
+var nextButton = document.getElementById('next');
+var submitButton = document.getElementById('submit');
 
-var myQuestion2 = {
-    question: "What does the DOM stand for?",
-    answer: "The DOM",
-};
+function buildQuiz(){}
+
+function showResults(){}
+
+// display quiz right away
+buildQuiz();
+
+// on submit, show results
+submitButton.addEventListener('click', showResults);
+
+
+  function buildQuiz(){
+    // variable to store the HTML output
+    var output = [];
+  
+    // for each question...
+    myQuestions.forEach(
+      (currentQuestion, questionNumber) => {
+  
+        // variable to store the list of possible answers
+        var answers = [];
+  
+        // and for each available answer...
+        for(letter in currentQuestion.answers){
+  
+          // ...add an HTML radio button
+          answers.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+          );
+        }
+  
+        // add this question and its answers to the output
+        output.push(
+          `<div class="question"> ${currentQuestion.question} </div>
+          <div class="answers"> ${answers.join('')} </div>`
+        );
+      }
+    );
+  
+    // finally combine our output list into one string of HTML and put it on the page
+    quizContainer.innerHTML = output.join('');
+  }

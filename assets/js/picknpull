@@ -1,0 +1,197 @@
+// Pseudo code for the coding quiz challenge
+// 1.  build a home screen with a start button and view high scores
+// 2.  create and event listener for the start button
+// 2.1 onclick of the start button, 2 things happen
+// 1.  the timer starts and will be displayed
+// 2.  the first question is displayed with the answer choices
+// 3.  create an event listener for the answer choices
+// 3.1 onclick of an answer choice
+// 1.  indicate somehow that the answer is right or wrong
+// 2.  THEN go to the next question
+// 3.2 if we are creating these elements with the DOM in javascript, create a reusable function for creating the elements for the question and answers
+// 3.3 we'll probably need a variable/array/object to store questions and the correct answer
+// 4.  if the timer hits 0 OR the user gets through all the questions, we want to go to the highscore page
+// 4.1 an input field where the user can type in their highscore
+// 4.2 store the highscores in local storage (JSON.stringify)
+// 4.3 retrieve the highscores from the local storage for that user
+// 4.4 display the user;s highscores
+// 5.  subtract time from the timer is the answer is wrong
+// 5.1 timer should be displayed while the questions/answers change
+// 5.2 how to create a countdown in javascript - what will we need
+
+var prevButton = document.getElementById('previous');
+var nextButton = document.getElementById('next');
+var submitButton = document.getElementById('submit');
+
+function buildQuiz(){}
+
+function showResults(){}
+
+// display quiz right away
+buildQuiz();
+
+// on submit, show results
+submitButton.addEventListener('click', showResults);
+
+
+
+--------------------------------------------------------------------------
+
+
+var myQuestions = [
+    {
+      question: "Who invented JavaScript?",
+      answers: {
+        a: "Douglas Crockford",
+        b: "Sheryl Sandberg",
+        c: "Brendan Eich"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Which one of these is a JavaScript package manager?",
+      answers: {
+        a: "Node.js",
+        b: "TypeScript",
+        c: "npm"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Which tool can you use to ensure code quality?",
+      answers: {
+        a: "Angular",
+        b: "jQuery",
+        c: "RequireJS",
+        d: "ESLint"
+      },
+      correctAnswer: "d"
+    }
+  ];
+
+
+
+-------------------------------------------------------------
+
+
+
+  function buildQuiz(){
+    // variable to store the HTML output
+    const output = [];
+  
+    // for each question...
+    myQuestions.forEach(
+      (currentQuestion, questionNumber) => {
+  
+        // variable to store the list of possible answers
+        const answers = [];
+  
+        // and for each available answer...
+        for(letter in currentQuestion.answers){
+  
+          // ...add an HTML radio button
+          answers.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+          );
+        }
+  
+        // add this question and its answers to the output
+        output.push(
+          `<div class="question"> ${currentQuestion.question} </div>
+          <div class="answers"> ${answers.join('')} </div>`
+        );
+      }
+    );
+  
+    // finally combine our output list into one string of HTML and put it on the page
+    quizContainer.innerHTML = output.join('');
+  }
+
+
+
+
+
+  --------------------------------------------------------
+
+
+
+
+
+
+var myQuestion1 = {
+    questiojn: "What does the DOM stand for?",
+    answer: "The DOM",
+};
+
+var myQuestion2 = {
+    question: "What does the DOM stand for?",
+    answer: "The DOM",
+};
+
+
+---------------------------------------------------------------
+
+
+// Assignment code here
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+var specChar = ["!", "@", "#", "$", "%", "^", "&", "*"]
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+// Prompt for length of password
+function generatePassword() {
+  var passLength = parseInt(window.prompt("How many characters in your password? Pick from 8 to 128."));
+  if (passLength > 128 || passLength < 8) {
+    return null;
+  }
+
+// Password criteria prompts
+  var passUpper = window.confirm('Do you want your password to include uppercase characters? Click "ok" if yes.');
+  var passLower = window.confirm('Do you want your password to include lower case characters? Click "ok" if yes.');
+  var passNum = window.confirm('Do you want your password to include numbers? Click "ok" if yes.');
+  var passSpec = window.confirm('Do you want your password to be include special characters? Click "ok" if yes.');
+  
+  var possibleChar = [];
+
+  var generatedPass = [];
+
+  if (passUpper) {
+    possibleChar = possibleChar.concat(upperCase);
+  }
+  if (passLower) {
+    possibleChar = possibleChar.concat(lowerCase);
+  }
+  if (passNum) {
+    possibleChar = possibleChar.concat(number);
+  }
+  if (passSpec) {
+    possibleChar = possibleChar.concat(specChar);
+  }
+
+
+  for (var i = 0; i < passLength; i++) {
+    var randomLetter = possibleChar[Math.floor(Math.random() * (possibleChar.length))]
+    generatedPass.push(randomLetter);
+  }
+
+
+  return generatedPass.join("");
+};
