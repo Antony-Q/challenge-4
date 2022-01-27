@@ -23,9 +23,9 @@ var prevButton = document.getElementById('previous');
 var nextButton = document.getElementById('next');
 var submitButton = document.getElementById('submit');
 
-function buildQuiz(){}
+function buildQuiz(){};
 
-function showResults(){}
+function showResults(){};
 
 // display quiz right away
 buildQuiz();

@@ -37,6 +37,11 @@ submitButton.addEventListener('click', showResults);
 
 --------------------------------------------------------------------------
 
+var my 
+
+
+
+
 
 var myQuestions = [
     {
