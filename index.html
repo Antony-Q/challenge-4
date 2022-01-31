@@ -10,23 +10,40 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1>Coding Quiz</h1>
+        <h1>Coding Quiz Challenge</h1>
       </header>
       <div class="card">
+        <button id="highscores" class="btn">High Scores</button>
         <div class="card-header">
-          <h2>TEXT HERE</h2>
+          <h2>"TEXT HERE"</h2>
         </div>
+
         <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Placeholder text"
-            aria-label="Generated Password"
-          ></textarea>
+
+          <main class="page-content" id="page-content">
+
+            <!-- Tasks To Do -->
+            <section class="task-list-wrapper">
+              <h2 class="list-title">Tasks To Do</h2>
+              <ul class="task-list" id="tasks-to-do"></ul>
+            </section>
+        
+            <!-- Tasks In Progress -->
+            <section class="task-list-wrapper">
+              <h2 class="list-title">Tasks In Progress</h2>
+              <ul class="task-list" id="tasks-in-progress"></ul>
+            </section>
+        
+            <!-- Tasks Completed -->
+            <section class="task-list-wrapper">
+              <h2 class="list-title">Tasks Completed</h2>
+              <ul class="task-list" id="tasks-completed"></ul>
+            </section>
+          </main>
         </div>
         <div class="card-footer">
-          <button id="previous">Previous Question</button>
-          <button id="next">Next Question</button>
+          <button id="previous" class="btn">Previous Question</button>
+          <button id="next" class="btn">Next Question</button>
           <button id="submit" class="btn">Submit</button>
         </div>
       </div>
