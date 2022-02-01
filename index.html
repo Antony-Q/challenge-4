@@ -15,37 +15,28 @@
       <div class="card">
         <button id="highscores" class="btn">High Scores</button>
         <div class="card-header">
-          <h2>"TEXT HERE"</h2>
+          <h2>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</h2>
         </div>
 
-        <div class="card-body">
+        <div class="quiz-container" id="quiz">
 
-          <main class="page-content" id="page-content">
+          <div id="quiz"></div>
+      
+          <!-- Tasks Completed -->
+<!--          <section class="task-list-wrapper"> -->
+<!--            <h2 class="list-title">Tasks Completed</h2> -->
+<!--            <ul class="task-list" id="tasks-completed"></ul> -->
+<!--            </section> -->
 
-            <!-- Tasks To Do -->
-            <section class="task-list-wrapper">
-              <h2 class="list-title">Tasks To Do</h2>
-              <ul class="task-list" id="tasks-to-do"></ul>
-            </section>
-        
-            <!-- Tasks In Progress -->
-            <section class="task-list-wrapper">
-              <h2 class="list-title">Tasks In Progress</h2>
-              <ul class="task-list" id="tasks-in-progress"></ul>
-            </section>
-        
-            <!-- Tasks Completed -->
-            <section class="task-list-wrapper">
-              <h2 class="list-title">Tasks Completed</h2>
-              <ul class="task-list" id="tasks-completed"></ul>
-            </section>
-          </main>
+          </div>
         </div>
         <div class="card-footer">
           <button id="previous" class="btn">Previous Question</button>
           <button id="next" class="btn">Next Question</button>
           <button id="submit" class="btn">Submit</button>
+          <button id="startQuiz" class="btn">Start Quiz</button>
         </div>
+        <div id="results"></div>
       </div>
     </div>
     <script src="./assets/js/script.js"></script>
