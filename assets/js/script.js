@@ -194,4 +194,30 @@ if(currentSlide === 0){
   submitButton.addEventListener('click', showResults);
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
-})();
+}
+)();
+
+// Build Timer
+function getTimeRemaining(endtime) {
+  var total = Date.parse(endtime) - Date.parse(new Date());
+  var seconds = Math.floor((total / 1000) % 60);
+  
+  return {
+    total,
+    seconds
+  };
+}
+
+function initializeClock(id, endtime) {
+  const clock = document.getElementById(id);
+  const timeinterval = setInterval(() => {
+    const t = getTimeRemaining(endtime);
+    clock.innerHTML = '' + t.seconds;
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+    }
+  },1000);
+}
+
+var deadline = new Date(Date.parse(new Date()) + 60 * 1000);
+initializeClock(id='clockdiv', deadline);
