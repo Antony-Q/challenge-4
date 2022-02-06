@@ -9,7 +9,7 @@
 // 1.  indicate somehow that the answer is right or wrong
 // 2.  THEN go to the next question
 // 3.2 if we are creating these elements with the DOM in javascript, create a reusable function for creating the elements for the question and answers
-// 3.3 we'll probably need a variable/array/object to store questions and the correct answer
+// 3.3 we'll probably need a constiable/array/object to store questions and the correct answer
 // 4.  if the timer hits 0 OR the user gets through all the questions, we want to go to the highscore page
 // 4.1 an input field where the user can type in their highscore
 // 4.2 store the highscores in local storage (JSON.stringify)
@@ -22,15 +22,15 @@
 (function(){
   // Functions
   function buildQuiz(){
-    // variable to store the HTML output
-    var output = [];
+    // constiable to store the HTML output
+    const output = [];
 
     // for each question...
     myQuestions.forEach(
       (currentQuestion, questionNumber) => {
 
-        // variable to store the list of possible answers
-        var answers = [];
+        // constiable to store the list of possible answers
+        const answers = [];
 
         // and for each available answer...
         for(letter in currentQuestion.answers){
@@ -62,7 +62,7 @@
   function showResults(){
 
     // gather answer containers from our quiz
-    var answerContainers = quizContainer.querySelectorAll('.answers');
+    const answerContainers = quizContainer.querySelectorAll('.answers');
 
     // keep track of user's answers
     let numCorrect = 0;
@@ -71,9 +71,9 @@
     myQuestions.forEach( (currentQuestion, questionNumber) => {
 
       // find selected answer
-      var answerContainer = answerContainers[questionNumber];
-      var selector = `input[name=question${questionNumber}]:checked`;
-      var userAnswer = (answerContainer.querySelector(selector) || {}).value;
+      const answerContainer = answerContainers[questionNumber];
+      const selector = `input[name=question${questionNumber}]:checked`;
+      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
       // if answer is correct
       if(userAnswer === currentQuestion.correctAnswer){
@@ -122,11 +122,11 @@ if(currentSlide === 0){
     showSlide(currentSlide - 1);
   }
 
-  // Variables
-  var quizContainer = document.getElementById('quiz');
-  var resultsContainer = document.getElementById('results');
-  var submitButton = document.getElementById('submit');
-  var myQuestions = [
+  // constiables
+  const quizContainer = document.getElementById('quiz');
+  const resultsContainer = document.getElementById('results');
+  const submitButton = document.getElementById('submit');
+  const myQuestions = [
     {
       question: "Are you ready to start the quiz? Press the 'Next' button to begin!",
       correctAnswer: ""
@@ -182,9 +182,9 @@ if(currentSlide === 0){
   buildQuiz();
 
   // Pagination
-  var previousButton = document.getElementById("previous");
-  var nextButton = document.getElementById("next");
-  var slides = document.querySelectorAll(".slide");
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
+  const slides = document.querySelectorAll(".slide");
   let currentSlide = 0;
 
   // Show the first slide
@@ -199,8 +199,8 @@ if(currentSlide === 0){
 
 // Build Timer
 function getTimeRemaining(endtime) {
-  var total = Date.parse(endtime) - Date.parse(new Date());
-  var seconds = Math.floor((total / 1000) % 60);
+  const total = Date.parse(endtime) - Date.parse(new Date());
+  const seconds = Math.floor((total / 1000) % 60);
   
   return {
     total,
@@ -219,5 +219,16 @@ function initializeClock(id, endtime) {
   },1000);
 }
 
-var deadline = new Date(Date.parse(new Date()) + 60 * 1000);
+const deadline = new Date(Date.parse(new Date()) + 60 * 1000);
 initializeClock(id='clockdiv', deadline);
+
+// Event listener to tie clock and begin button together
+function startClock() {
+nextButton.addEventListener('click', initializeClock)};
+
+function colorchange(seconds)
+{
+ if(seconds.value <= "57")
+ {
+    seconds.style.color="red";
+ }};
