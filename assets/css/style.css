@@ -174,7 +174,6 @@ button:hover{
 	background-color: #38a;
 }
 
-
 .slide{
   position: absolute;
   left: 0px;
@@ -192,4 +191,15 @@ button:hover{
   position: relative;
   height: 200px;
   margin-top: 40px;
+}
+
+div #clockdiv {
+  width: 2vw;
+  height: auto;
+  background: hsl(360, 91%, 36%);
+  color:hsl(0, 0%, 100%);
+  font-weight: bold;
+  align-content: center;
+  margin-left: 10vw;
+  border-radius: 2vw;
 }
