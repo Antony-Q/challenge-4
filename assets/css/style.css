@@ -39,7 +39,7 @@ header {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
   color: hsl(206, 17%, 28%);
   font-size: 18px;
-  margin: 0 auto;
+  margin: auto;
   max-width: 800px;
   padding: 30px 40px;
 }
@@ -194,12 +194,17 @@ button:hover{
 }
 
 div #clockdiv {
-  width: 2vw;
-  height: auto;
-  background: hsl(360, 91%, 36%);
-  color:hsl(0, 0%, 100%);
-  font-weight: bold;
-  align-content: center;
-  margin-left: 10vw;
-  border-radius: 2vw;
+  border: none;
+  background-color: hsl(360, 91%, 36%);
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
+    0px;
+  color: hsl(0, 0%, 100%);
+  display: inline-block;
+  font-size: 22px;
+  line-height: 22px;
+  margin: 12px 12px 12px 16px;
+  padding: 14px 20px;
+  text-align: center;
+  cursor: pointer;
 }
