@@ -19,6 +19,8 @@
 // 5.1 timer should be displayed while the questions/answers change
 // 5.2 how to create a countdown in javascript - what will we need
 
+const deadline = new Date(Date.parse(new Date()) + 60 * 1000);
+
 (function(){
   // Functions
   function buildQuiz(){
@@ -115,6 +117,7 @@ if(currentSlide === 0){
   }
 
   function showNextSlide() {
+    initializeClock(deadline)
     showSlide(currentSlide + 1);
   }
 
@@ -123,6 +126,7 @@ if(currentSlide === 0){
   }
 
   // constiables
+  const startContainer = document.getElementById('startPage');
   const quizContainer = document.getElementById('quiz');
   const resultsContainer = document.getElementById('results');
   const submitButton = document.getElementById('submit');
@@ -208,8 +212,8 @@ function getTimeRemaining(endtime) {
   };
 }
 
-function initializeClock(id, endtime) {
-  const clock = document.getElementById(id);
+function initializeClock(endtime) {
+  const clock = document.getElementById("clockdiv");
   const timeinterval = setInterval(() => {
     const t = getTimeRemaining(endtime);
     clock.innerHTML = '' + t.seconds;
@@ -219,16 +223,9 @@ function initializeClock(id, endtime) {
   },1000);
 }
 
-const deadline = new Date(Date.parse(new Date()) + 60 * 1000);
-initializeClock(id='clockdiv', deadline);
+
+// initializeClock(id='clockdiv', deadline);
 
 // Event listener to tie clock and begin button together
 function startClock() {
 nextButton.addEventListener('click', initializeClock)};
-
-function colorchange(seconds)
-{
- if(seconds.value <= "57")
- {
-    seconds.style.color="red";
- }};
